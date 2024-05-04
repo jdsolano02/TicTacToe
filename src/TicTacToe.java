@@ -6,23 +6,37 @@ import javax.swing.*;
 
 public class TicTacToe {
 
-    //medidas del tablero
-    
+    //medidas del JFrame
     int boardWidth =600;
-    int boardheight = 650; // 50px adicionales para panel arriba
+    int boardheight = 670; // 50px adicionales para panel arriba / 20px para boton restart
 
 
-    //Definicion del JFrame
+//Definicion del JFrame
 
+    //titulo de la pagina
     JFrame frame = new JFrame("Tic-Tac-Toe");
+
+    //top
     JLabel textLable = new JLabel();
     JPanel textPanel = new JPanel();
     JPanel boardPanel = new JPanel();
 
+    //tablero
+    JPanel tablero = new JPanel();
     JButton[][] board = new JButton[3][3];
     String playerX = "X";
     String playerO = "O";
     String currentPlayer = playerX;
+
+    //bottom
+    JPanel bottom = new JPanel();
+    JButton restart = new JButton();
+
+
+    //players score
+    int playerXscore = 0;
+    int playerOscore = 0;
+
 
     // win condition variable
     boolean gameOver = false;
@@ -48,11 +62,13 @@ public class TicTacToe {
         textLable.setHorizontalAlignment(JLabel.CENTER);
         textLable.setText("Tic-Tac-Toe");
         textLable.setOpaque(true);
+
         
         //page title
         textPanel.setLayout(new BorderLayout());
         textPanel.add(textLable);
         frame.add(textPanel, BorderLayout.NORTH);
+        frame.add(bottom, BorderLayout.SOUTH);
 
         // Create the board as a 3x3 array
         boardPanel.setLayout(new GridLayout(3,3));
@@ -67,7 +83,7 @@ public class TicTacToe {
                 board[r][c] = tile;
                 boardPanel.add(tile);
 
-                //styling buttons
+                //styling tile buttons
                 tile.setBackground(Color.darkGray);
                 tile.setForeground(Color.white);
                 tile.setFont(new Font("Arial", Font.BOLD, 120));
@@ -190,4 +206,6 @@ void setTie(JButton tile){
     textLable.setText("It is a tie");
     textLable.setForeground(Color.orange);
 }
+
+
 }
